@@ -14,7 +14,7 @@ Template.add_product.events({
       //This collection only stores Product Images/Can be all images if necessary
       ProductsImages.insert(fsFile, function(err, result){
         if(!err){
-          var productImage = '/cfs/files/ProductsImages'+ result._id
+          var productImage = "/cfs/files/ProductsImages/" + result._id;
           //Insert into Products Collection
           Products.insert({
             name: name,
@@ -28,7 +28,7 @@ Template.add_product.events({
       });
     } else {
       //If no image still add product..but
-      var productImage = '/img/noimage.png';
+      var productImage = "/img/noimage.png";
       //Insert into Products Collection
       Products.insert({
         name: name,

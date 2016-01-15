@@ -12,3 +12,11 @@ footer{
 textarea{
   resize:none;
 }
+.full{
+  width:100%;
+}
+.product-row{
+  border-bottom: #ccc 1px solid;
+  padding: 20px;
+  margin-bottom: 10px;
+}

@@ -1,6 +1,7 @@
 <template name='sidebar'>
   <h3>Product Categories</h3>
     <div class='list-group'>
+      <a href='/products' class='list-group-item'>All</a>
       {{#each categories}}
         <a href='/categories/{{slug}}' class='list-group-item'>{{name}}</a>
       {{/each}}
