@@ -9,7 +9,7 @@
     <div class='form-group'>
       <label>Category</label>
       <select class='form-control' name='category'>
-          <option value='0'>--Select Category--</option>
+          <option disabled>--Select Category--</option>
           {{#each categories}}
             <option value="{{slug}}"> {{name}} </option>
           {{/each}}
