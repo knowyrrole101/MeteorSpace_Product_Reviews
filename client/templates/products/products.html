@@ -1,5 +1,7 @@
 <template name='products'>
   {{#each products}}
       {{name}}
+  {{else}}
+      <h4 class='text-danger'> There are no products </h4>
   {{/each}}
 </template>
