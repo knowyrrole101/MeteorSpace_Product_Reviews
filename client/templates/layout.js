@@ -9,23 +9,31 @@ Template.registerHelper('truncateText', function(text, length){
   // return new Spacebars.SafeString(new_text);
 })
 Template.registerHelper('starRating', function(rating){
-  var stars='';
-  for(var i=1;i<=rating;i++){
-    stars += "<img class='review-stars' src='/img/star.png'>";
-  };
-  return new Spacebars.SafeString(stars);
+  if(rating){
+    var stars='';
+    for(var i=1;i<=rating;i++){
+      stars += "<img class='review-stars' src='/img/star.png'>";
+    };
+    return new Spacebars.SafeString(stars);
+  } else {
+    return new Spacebars.SafeString("<span class='text-danger'>No Reviews</span>")
+  }
 });
 Template.registerHelper('avgRating', function(reviews){
-  var average=0;
-  var stars = '';
-  //Add all reviews up
-  for(var i in reviews){
-    console.log(reviews.length)
-    average += parseInt(reviews[i].rating);
+  if(reviews){
+    var average=0;
+    var stars = '';
+    //Add all reviews up
+    for(var i in reviews){
+      console.log(reviews.length)
+      average += parseInt(reviews[i].rating);
+    }
+    average = Math.floor(average/reviews.length)
+    for(var i=1;i<=average;i++){
+      stars += "<img class='review-stars' src='/img/star.png'>";
+    };
+    return new Spacebars.SafeString(stars)
+  } else {
+    return new Spacebars.SafeString("<span class='text-danger'>No Reviews</span>")
   }
-  average = Math.floor(average/reviews.length)
-  for(var i=1;i<=average;i++){
-    stars += "<img class='review-stars' src='/img/star.png'>";
-  };
-  return new Spacebars.SafeString(stars)
 });
