@@ -20,3 +20,7 @@ textarea{
   padding: 20px;
   margin-bottom: 10px;
 }
+.review-stars{
+  height: 20px;
+  width: 20px;
+}
