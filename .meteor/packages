@@ -26,3 +26,4 @@ cfs:gridfs
 accounts-ui
 accounts-password
 momentjs:moment
+cfs:s3
