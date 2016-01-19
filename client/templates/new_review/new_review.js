@@ -3,15 +3,7 @@ Template.new_review.events({
     var rating = event.target.rating.value;
     var body = event.target.body.value;
     //Update product with a sub array of review
-    Products.update({
-      _id: this._id},{
-        $push:{
-          reviews:{
-            rating: rating,
-            body: body,
-          }
-        }
-      });
+    Meteor.call('addReview',this._id,rating,body);
     //Send Flash Success
     FlashMessages.sendSuccess("Review Completed Successfully!");
     Router.go('/products');

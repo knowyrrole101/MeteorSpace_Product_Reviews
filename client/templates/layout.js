@@ -7,7 +7,8 @@ Template.registerHelper('truncateText', function(text, length){
   };
   return new_text;
   // return new Spacebars.SafeString(new_text);
-})
+});
+
 Template.registerHelper('starRating', function(rating){
   if(rating){
     var stars='';
@@ -19,13 +20,13 @@ Template.registerHelper('starRating', function(rating){
     return new Spacebars.SafeString("<span class='text-danger'>No Reviews</span>")
   }
 });
+
 Template.registerHelper('avgRating', function(reviews){
   if(reviews){
     var average=0;
     var stars = '';
     //Add all reviews up
     for(var i in reviews){
-      console.log(reviews.length)
       average += parseInt(reviews[i].rating);
     }
     average = Math.floor(average/reviews.length)
@@ -36,4 +37,8 @@ Template.registerHelper('avgRating', function(reviews){
   } else {
     return new Spacebars.SafeString("<span class='text-danger'>No Reviews</span>")
   }
+});
+
+Template.registerHelper('formatDate', function(date){
+  return moment(date).format('MM-DD-YYYY');
 });

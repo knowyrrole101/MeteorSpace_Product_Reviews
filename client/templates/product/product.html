@@ -6,7 +6,7 @@
     </div>
     <div class='col-md-10'>
       <h4>{{name}}</h4>
-      <p> Average Rating: {{avgRating reviews}}</p>
+      <p> Average Rating: {{avgRating reviews}} ({{reviews.length}})</p>
       <p> {{description}} </p>
       <a href="/categories/{{category}}" class='btn btn-default'>Back</a>
     </div>
@@ -14,7 +14,9 @@
   <div class='row'>
     <div class='col-md-12'>
       <div class='text-right'>
-        <a href='/new_review/{{_id}}' class='btn btn-success'>Leave a Review</a>
+        {{#if currentUser}}
+          <a href='/new_review/{{_id}}' class='btn btn-success'>Leave a Review</a>
+        {{/if}}
       </div>
     </div>
   </div>
@@ -25,7 +27,7 @@
       <p></p>
       {{#each reviews}}
         <p>{{starRating rating}}</p>
-        <h5>{{body}}</h5> 
+        <h5>{{body}} - <small>Review posted on {{formatDate createdAt}}</small></h5>
       {{/each}}
     </div>
     <div class='col-md-2'>
