@@ -7,9 +7,8 @@ Template.add_product.events({
     //Product Image
     //Jquery to pull file from form.
     var file = $('#productImage').get(0).files[0];
-    console.log(file);
     //If file var exists then execute File Storage Creation
-    Meteor.call('addProduct',file,name,category,description,is_featured)
+    Meteor.call('addProduct',file,name,category,description,is_featured);
     //Clear form
     event.target.name.value = '';
     event.target.category.value = '';
