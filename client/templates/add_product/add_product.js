@@ -8,11 +8,9 @@ Template.add_product.events({
     //Jquery to pull file from form.
     var file = $('#productImage').get(0).files[0];
     //If file var exists then execute File Storage Creation
-    console.log(file)
     if (file){
       fsFile = new FS.File(file);
-      console.log(file);
-      console.log(fsFile);
+
       //Insert into ProductsImages Collection
       //This collection only stores Product Images/Can be all images if necessary
       ProductsImages.insert(fsFile, function(err, result){
@@ -44,16 +42,17 @@ Template.add_product.events({
         createdAt: new Date()
       });
     }
-  }
+
     // Meteor.call('addProduct',file,name,category,description,is_featured);
     //Clear form
-    // event.target.name.value = '';
-    // event.target.category.value = '';
-    // event.target.description.value = '';
-    // event.target.is_featured.value = '';
+    event.target.name.value = '';
+    event.target.category.value = '';
+    event.target.description.value = '';
+    event.target.is_featured.value = '';
 
     FlashMessages.sendSuccess("Product Added Succesfully");
     Router.go('/');
+
     //prevent form submission
     return false;
   }
