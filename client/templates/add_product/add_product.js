@@ -10,38 +10,23 @@ Template.add_product.events({
     //If file var exists then execute File Storage Creation
     if (file){
       fsFile = new FS.File(file);
-
       //Insert into ProductsImages Collection
       //This collection only stores Product Images/Can be all images if necessary
       ProductsImages.insert(fsFile, function(err, result){
         if(!err){
           var productImage = "/cfs/files/ProductsImages/" + result._id;
           //Insert into Products Collection
-          Products.insert({
-            name: name,
-            category: category,
-            description: description,
-            is_featured: is_featured,
-            image: productImage,
-            createdAt: new Date()
-          });
+        Meteor.call('addProduct',productImage,name,category,description,is_featured);
         }
       });
     } else {
-      //If no image still add product..but
-      var productImage = "/img/noimage.png";
-      //Insert into Products Collection
-      Products.insert({
-        name: name,
-        category: category,
-        description: description,
-        is_featured: is_featured,
-        image: productImage,
-        createdAt: new Date()
-      });
+        //If no image still add product..but
+        var productImage = "/img/noimage.png";
+        //Insert into Products Collection
+        Meteor.call('addProduct',productImage,name,category,description,is_featured);
     }
 
-    // Meteor.call('addProduct',file,name,category,description,is_featured);
+    //
     //Clear form
     event.target.name.value = '';
     event.target.category.value = '';
