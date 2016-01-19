@@ -5,12 +5,3 @@ Meteor.publish('products', function(){
 Meteor.publish('categories', function(){
   return Categories.find();
 });
-
-ProductsImages.allow({
-  insert: function(fileId, document){
-    return true;
-  },
-  download: function(fileId, document){
-    return true;
-  }
-});
